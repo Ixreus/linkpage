@@ -30,39 +30,98 @@ a {
   font-size: 1.2rem;
 }
 
-/* From cssbuttons.io by @niat786 */
-button {
-  border-radius: 30px;
-  padding: 1em 2em;
-  background: linear-gradient(117deg, rgb(254, 145, 80), rgb(254, 100, 70));
+/* From uiverse.io by @EmmaxPlay */
+.btn {
+  padding: 0.9em 1.6em;
   border: none;
-  color: rgb(255, 255, 255);
-  font-size: 1rem;
-  text-transform: uppercase;
-  font-family: "Open Sans", sans-serif;
-  font-weight: 600;
+  outline: none;
+  color: #fff;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 17px;
   cursor: pointer;
-  transition: box-shadow 0.25s ease 0s;
+  position: relative;
+  z-index: 0;
+  border-radius: 12px;
 }
 
-button:hover,
-button:focus {
-  background: linear-gradient(117deg, rgb(248, 137, 73), rgb(248, 82, 49));
-  box-shadow: 0 0.1rem 0.8rem rgb(254, 100, 70);
+.btn::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(46, 46, 46);
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+/* glow */
+.btn::before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #002bff,
+    #ff00c8,
+    #002bff,
+    #ff0000,
+    #002bff,
+    #ff00c8,
+    #002bff
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 600%;
+  z-index: -1;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  filter: blur(8px);
+  animation: glowing 20s linear infinite;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+  opacity: 0;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 400% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/* hover */
+.btn:hover::before {
+  opacity: 1;
+}
+
+.btn:active:after {
+  background: transparent;
+}
+
+.btn:active {
+  color: #000;
+  font-weight: bold;
 }
 
 .social {
-  /* display: flex;
-    margin: 0 auto;
-    max-width: 300px; */
   display: flex;
-  max-width: 400px;
+  max-width: 250px;
   margin: 0 auto;
 }
 
 .social2 {
   display: flex;
   margin: 0 auto;
-  max-width: 400px;
+  max-width: 250px;
 }
 
